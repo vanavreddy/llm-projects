@@ -1,0 +1,38 @@
+name: llm_projects
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  # Core scientific
+  - numpy
+  - pandas
+  # Web framework
+  - pip:
+    # LangChain ecosystem
+    - langchain
+    - langchain-community
+    - langchain-ollama
+    - langchain-core
+    # Vector database
+    - chromadb
+    # API framework
+    - fastapi
+    - uvicorn[standard]
+    # Document loading
+    - pypdf
+    - python-docx
+    # Embeddings
+    - sentence-transformers
+    # HTTP client
+    - requests
+    - httpx
+    # Data validation
+    - pydantic
+    # Testing
+    - pytest
+    - pytest-asyncio
+    # Utilities
+    - python-dotenv
+    - tqdm
