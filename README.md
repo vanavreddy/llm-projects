@@ -1,6 +1,6 @@
 # LLM Projects Portfolio
 
-Two hands-on projects demonstrating practical LLM application development6.
+Two hands-on projects demonstrating practical LLM application development.
 
 ---
 
