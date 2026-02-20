@@ -113,9 +113,54 @@ agent_summarizer/
 - `token.json`: YOUR Gmail access token (NEVER share or commit)
 
 ---
-## Acknowledgments
 
-- Kaggle for the USA Real Estate Dataset
-- Ollama for making local LLM inference accessible
-- LangChain for RAG abstractions
-- Google for Gmail API
+## Flow Diagram
+
+```
+┌──────────────────────────┐
+│ Gmail API                │
+│ OAuth 2.0 Auth           │
+└─────────────┬────────────┘
+              │
+              ▼
+┌──────────────────────────┐
+│ Email Fetch Agent        │
+│ • Query: from:jobalerts  │
+│ • Poll / Webhook         │
+└─────────────┬────────────┘
+              │
+              ▼
+┌──────────────────────────┐
+│ Email Parser             │
+│ • MIME decode            │
+│ • Extract plain text     │
+└─────────────┬────────────┘
+              │
+              ▼
+┌──────────────────────────┐
+│ Email Classifier         │
+│ • Job Alert              │
+│ • Post / Newsletter      │
+│ • Other                  │
+└─────────────┬────────────┘
+              │
+              ▼
+┌──────────────────────────┐
+│ Job Extraction Engine    │
+│ • Anchor detection       │
+│   ("View job:")          │
+│ • Title extraction       │
+│ • Company extraction     │
+│ • Location extraction    │
+│ • Salary parsing         │
+└─────────────┬────────────┘
+              │
+              ▼
+┌──────────────────────────┐
+│ Structured Output        │
+│ • JSON                   │
+│ • DB Insert              │
+│ • Notion / Sheet / API   │
+└──────────────────────────┘
+
+```
