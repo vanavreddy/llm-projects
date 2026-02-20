@@ -128,7 +128,7 @@ rag_realestate/
 
 ### Architecture Diagram
 
-```
+```mermaid
 ┌──────────────┐
 │ User / Client│
 │ (CLI, UI)    │
