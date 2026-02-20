@@ -125,3 +125,39 @@ rag_realestate/
 ├── chroma_db/            # Vector database storage
 └── README.md
 ```
+
+### Architecture Diagram
+
+┌──────────────┐
+│ User / Client│
+│ (CLI, UI)    │
+└──────┬───────┘
+       │ HTTP
+┌──────▼────────┐
+│ FastAPI API   │
+│ Uvicorn :8000 │
+└──────┬────────┘
+       │ function call
+┌──────▼────────────────────────┐
+│ RAG Application Layer         │
+│ • Query Orchestrator          │
+│ • Prompt Builder              │
+│ • Retrieval Logic             │
+└──────┬──────────────┬─────────┘
+       │              │
+       │              │
+┌──────▼──────┐   ┌───▼─────────┐
+│ ChromaDB    │   │ Ollama      │
+│ Vector DB   │   │ LLM Runtime │
+│ (local)     │   │ :11434      │
+└──────┬──────┘   └───┬─────────┘
+       │              │
+┌──────▼──────┐   ┌───▼─────────┐
+│ Local Disk  │   │ Mistral LLM │
+│ ./chroma_db │   │ + Embeddings│
+└─────────────┘   └───┬─────────┘
+                      │
+               ┌──────▼──────┐
+               │ CPU / GPU   │
+               │ Acceleration│
+               └─────────────┘
