@@ -128,6 +128,7 @@ rag_realestate/
 
 ### Architecture Diagram
 
+```
 ┌──────────────┐
 │ User / Client│
 │ (CLI, UI)    │
@@ -161,3 +162,5 @@ rag_realestate/
                │ CPU / GPU   │
                │ Acceleration│
                └─────────────┘
+
+```
